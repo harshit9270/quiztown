@@ -86,10 +86,10 @@ p{
 @media screen and (max-width: 1000px){
 
     #home{
-      height:750px; 
+      height:700px; 
     }
     #home::before{
-      height:750px; 
+      height:700px; 
     }
 }
 
