@@ -83,6 +83,16 @@ p{
     z-index: -10;
 }
 
+@media screen and(max-width: 1000px){
+
+    #home{
+      height:750px; 
+    }
+    #home::before{
+      height:750px; 
+    }
+}
+
 #insBtn:hover{
     background-color: rgb(60, 55, 134) !important;
 }
