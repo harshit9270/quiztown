@@ -79,7 +79,7 @@ p{
     width: 100%;
     position: absolute;
     /* top: 0; */
-    background: url('../images/topbg.jpg') center center/cover no-repeat;
+    background: url('../images/topBg.jpg') center center/cover no-repeat;
     z-index: -10;
 }
 
