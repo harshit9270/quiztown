@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz | QuizTown</title>
+    <link rel="icon" href="public/images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed&family=Itim&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch&display=swap" rel="stylesheet">
+    <!-- <script type="text/javascript" src="https://kit.fontawesome.com/a6d3a7fa97.js" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- RemixIcons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Grenze Gotisch', cursive;
+            font-weight: 900;
+        }
+
+        .progress {
+            width: 90%;
+            border: 2px solid rgb(61, 60, 60);
+            height: 30px;
+            font-size: 1.3rem;
+        }
+
+        #btnNext {
+            display: none;
+        }
+
+        #btnCheck,#btnNext {
+            margin: 20px;
+            float: right;
+        }
+
+        .resultH {
+            color: rgb(38, 148, 212);
+        }
+
+        #btnCheck:hover ,#btnNext:hover{
+            outline: none;
+            background-color: rgb(69, 8, 112);
+        }
+
+        #quizHeader {
+            /* color: rgb(69, 8, 112); */
+            color: rgb(46, 162, 230);
+        }
+
+        #btnLevel {
+            width: fit-content;
+            margin: 20px;
+            align-self: center;
+            background-color: rgb(69, 8, 112);
+        }
+
+        #btnLevel:hover {
+            background-color: rgb(38, 148, 212);
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .selectAnswer {
+            background-color: white !important;
+            color: black;
+            text-transform: capitalize;
+            border: 3px solid black !important;
+            font-weight: 700;
+        }
+
+        .answer {
+            padding: 0px;
+            cursor: pointer;
+            font-size: 1.45rem;
+            display: inline-block;
+            width: 180px;
+        }
+
+        .answer-btn {
+            border: 2px solid royalblue;
+            background-color: gainsboro;
+            font-size: 1.8rem;
+            border-radius: 6px;
+            margin: 10px 30px;
+            outline: none !important;
+        }
+
+        .answer-btn:hover {
+            background-color: turquoise;
+        }
+
+        #imageDiv {
+            /* width: 45%; */
+            /* flex: 1; */
+            display: table-cell;
+            /* max-height: 600px; */
+            border: 2px dotted;
+            position: relative;
+        }
+
+        #imageDiv::before {
+            content: "";
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            z-index: 10;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .correct {
+            color: green;
+            margin-left: 20px;
+        }
+
+        .wrong {
+            color: red;
+            margin-left: 20px;
+        }
+
+        #close {
+            font-size: 2.1rem;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #6e6e6e;
+            z-index: 10;
+        }
+
+        #close:hover {
+            color: black;
+        }
+
+        #rightBox {
+            /* width: 55%; */
+            padding: 30px 25px;
+            border: 2px dotted;
+            border-left: none;
+            display: table-cell;
+        }
+
+        .toast {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .correctOne{
+            background-color: green !important;
+            color: white;
+            border-color: black;
+            outline: none !important;
+        }
+     
+        .wrongOne{
+            background-color: red !important;
+            color: white;
+            border-color: black;
+            outline: none !important;
+        }
+
+        @media screen and (max-width: 1100px) {
+            #quizDiv {
+                flex-direction: column;
+            }
+
+            #rightBox {
+                border: 2px dotted;
+                border-top: none;
+            }
+
+            .pageMovement button {
+                margin: 10px auto;
+            }
+
+            .toast {
+                position: fixed;
+                bottom: 20px;
+                z-index: 100;
+                height: fit-content;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            .answer-btn {
+                margin: 10px auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- <div id="c-heading">
+        
+        <div>
+            <h1 id="chead">Welcome to the world of Quizzes : QuizTown</h1>
+            <p>Test your smarts with these fun quizzes</p>
+        </div>
+    </div> -->
+
+    <!-- toast code  -->
+    <div class="toast" id="element" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body" id="myToast" style="padding: 10px 30px;font-size: 1.2rem;background-color: black;color: white;">
+            QuizTown
+        </div>
+    </div>
+
+    <section id="quizDiv" style="margin: 100px 10%;display: flex;justify-content: center;position: relative;">
+
+        <a id="logo" class="logo-q" href="/"><img src="images/logo.png"
+                style="width: 45px;position: absolute;top: 10px;left: 10px;filter: invert();z-index: 20;"
+                alt="Quiz Town"></a>
+        <a href="/instruction"><i class="ri-close-circle-line" id="close"></i></a>
+
+        <div id="imageDiv">
+            <img id="categoryWiseImage" src="" alt="category" style="width: 100%;height: 100%;">
+        </div>
+
+        <div id="rightBox">
+
+
+            <div class="header">
+                <h2 id="quizHeader"></h2>
+            </div>
+            <div id="question">
+                <h2 id="questions"></h2>
+            </div>
+            <div id="answer">
+
+            </div>
+            <div class="pageMovement">
+                <!-- <button class="nav-btn " id="btnPrevious">Previous</button> -->
+                <button class="btn btn-lg btn-primary" id="btnNext">Next</button>
+                <button class="btn btn-lg btn-primary" id="btnCheck">Check</button>
+            </div>
+            <div class="progress">
+                <div id="progress-bar" class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                    style="width: 50%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <a class="btn btn-lg btn-primary" href="/categories" role="button" id="btnLevel">Play More</a>
+        </div>
+
+
+    </section>
+
+
+
+    <div id="categoryValue" style="display: none;"><%= cateId %></div>
+    <div id="levelValue" style="display: none;"><%= levelId %></div>
+    <div id="username" style="display: none;"><%- userData.username%></div>
+    <div id="uniqueId" style="display: none;"><%- userData._id%></div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script type="module" src="js/confetti.js"></script>
+    <script type="text/javascript" src="js/quizScriptFirst.js"></script>
+
+    <script type="text/javascript" src="js/quizScript.js"></script>
+</body>
+
+</html>

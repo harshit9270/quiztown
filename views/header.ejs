@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <% if(pageTitle == "Brain storming quiz point"){ %>
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="QuizTown provides exciting and adventurous quizzes and trivias to get you lost in quizzes." />
+    <meta name="author" content="QuizTown" />
+    <meta name="keywords" content="QuizTown,Quiz Town,quizzes,quiz,quiz website">
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
+    <meta property="og:site_name" content="QuizTown" />
+    <!-- website name -->
+    <meta property="og:site" content="quiztown.herokuapp.com" />
+    <!-- website link -->
+    <meta property="og:title" content="QuizTown" />
+    <!-- title shown in the actual shared post -->
+    <meta property="og:description"
+        content="QuizTown provides exciting and adventurous quizzes and trivias to get you lost in quizzes." />
+    <!-- description shown in the actual shared post -->
+    <meta property="og:image" content="../images/logo.png" />
+    <!-- image link, make sure it's jpg -->
+    <meta property="og:url" content="https://quiztown.herokuapp.com/" />
+    <!-- where do you want your post to link to -->
+    <meta property="og:type" content="article" />
+    <!-- google verification meta tag -->
+    <meta name="google-site-verification" content="yQOOYhzcZG79A57m3G9EAneSTazh4D6v9AV1EZvFY2A" />
+    <% }%>
+
+    <title>QuizTown | <%= pageTitle %></title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link type='text/css' rel="stylesheet" href="/css/index.css">
+    <link type='text/css' rel="stylesheet" href="/css/chipStyle.css">
+    <link rel="stylesheet" media="screen and (max-width: 1000px)" href="/css/phone.css">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed&family=Itim&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch&display=swap" rel="stylesheet">
+
+    <!-- RemixIcons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <style>
+        @media screen and (max-width: 1000px){
+            .logoText{
+                display: none !important;
+            }
+            #topNavbar,#followingNavbar{
+                padding: 0;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Logic for displaying (Login/Register Butttons) or (user profile) ,if user is unauthenticated or isAuthenticated  -->
+    <% let one=""; let two=""; let inOrOut=""; if(userData == undefined) {
+    inOrOut = `
+    <li style="margin-left: 10px;">
+        <div class="chip tooltip">
+            <img src="https://w3schools.com/howto/img_avatar.png" alt="Contact Person">
+            Guest
+            <span class="tooltiptext" style="font-family: 'Fira Sans Extra Condensed', sans-serif;">
+                <a href="/register"
+                    style="margin-top: 10px;color: white;background-color: #6e6e6e;font-size: 1rem;"
+                    class="btn waves-effect btn-small waves-light">Register</a>
+                <a href="/login"
+                    style="margin-top: 10px;color: white;background-color: #6e6e6e;font-size: 1rem;"
+                    class="btn waves-effect btn-small waves-light">Login</a>
+            </span>
+        </div>
+
+    </li>
+    `; }
+     else if(userData != undefined) {
+    if(userData.picture)
+    { one = userData.picture; }
+     else if(!userData.picture)
+     { 
+    one="https://w3schools.com/howto/img_avatar.png"
+    }
+    if(userData.username)
+    { two = userData.username; }
+     else if(userData.displayName)
+     { 
+    two=userData.displayName
+    }
+     inOrOut = `
+    <li style="margin-left: 10px;">
+        <div class="chip tooltip">
+            <img src="${one}" alt="Contact Person">
+            ${two}
+            <span class="tooltiptext" style="font-family: 'Fira Sans Extra Condensed', sans-serif;">
+                <a href="/logout"
+                    style="margin-top: 10px;color: white;background-color: #6e6e6e;font-size: 1rem;"
+                    class="btn waves-effect btn-small waves-light">Logout</a>
+            </span>
+        </div>
+
+    </li>
+    `; } %>
+
+    <!-- top navbar -->
+    <nav id="topNavbar">
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo"
+                style="width: 40px;height: 40px;margin: 9px;filter: invert();"><img
+                    src="/images/logo.png" style="width: 100%;height: 100%;" alt="Quiz Town"></a>
+            <a href="/" class="brand-logo logoText" style="margin-left: 75px;">QuizTown </a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/about">About</a></li>
+                <li><a href="/instruction">Start Now</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+                <%- inOrOut %>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- following navbar -->
+
+    <nav id="followingNavbar" style="background-color: rgb(52, 116, 153);">
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo"
+            style="width: 40px;height: 40px;margin: 9px;filter: invert();"><img
+                    src="/images/logo.png" style="width: 100%;height: 100%;" alt="Quiz Town"></a>
+            <a href="/" class="brand-logo logoText" style="margin-left: 75px;">QuizTown </a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/about">About</a></li>
+                <li><a href="/instruction">Start Now</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+                <%- inOrOut %>
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+        <%- inOrOut %>
+        <li><a href="/about">About</a></li>
+        <li><a href="/instruction">Start Now</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+    </ul>

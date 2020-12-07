@@ -1,0 +1,271 @@
+body{
+    overflow:-moz-hidden-unscrollable;
+}
+#home{
+    flex-direction: column;
+}
+
+#text{
+    padding: 0;
+    width: 87%;
+    margin: auto;
+}
+
+#instruction-box{
+    flex-direction: column;
+}
+
+.box{
+    padding: 4px;
+    margin: 10px;
+}
+
+#review img{
+    width: 70%;
+    max-width: 450px;
+}
+
+#review{
+    height: 830px;
+}
+
+.btn{
+    font-size: 1.2rem;
+    width: 95%;
+    text-align: center;
+}
+
+.btn a{
+   padding: 6px 20px;
+}
+
+#img{
+   text-align: center;
+}
+
+
+#navbar ul li a{
+    font-size: 1.1rem;
+    padding: 0px;
+    margin: 0px 9px;
+    border-radius: 4px;
+}
+
+#logo img{
+    margin: 0px 27px;
+}
+ 
+.dropdown{
+    display: none;
+}
+
+
+#instructions{
+    text-align: center;
+    height: 1800px;
+    margin-bottom: 0px;
+} 
+
+#newsletter{
+    flex-direction: column;
+}
+
+
+#newsletter input{
+    /* width: 90%; */
+    border-radius: 10px;
+    align-self: center;
+}
+
+#newsletter button{
+    font-size: 1.3rem;
+    width: 75%;
+    border-radius: 9px;
+    padding: 4px 6px;
+    margin: 30px 0px;
+    align-self: center;
+}
+
+#ins-heading{
+    margin-left: 0px;
+}
+
+
+/* About.html */
+
+#about-boxes{
+    flex-direction: column;
+}
+
+
+#about-h{
+    margin-top: 200px;
+    margin-bottom: 60px;
+}
+
+.about-box{
+    height: auto;
+    width: 75%;
+    padding: 12px;
+}
+
+.about-box img{
+    width: 75%;
+    max-width: 400px;
+}
+
+
+#img-team{
+    max-width: 300px;
+    width: 70%;
+}
+
+/* instruction.html */
+
+#inst{
+    margin: 60px 20px;
+}
+
+#i-img img {
+    width: 90%;
+    margin-left: 9%;
+    max-width: 600px;
+    border-radius: 270px;
+}
+#categories{
+    font-size: 1.5rem;
+    margin-left: 10px;
+}
+
+#cat-h{
+    font-size: 2.4rem;
+    margin: 20px;
+}
+
+#scoring-rules{
+    font-size: 1.5rem;
+    margin: 10px;
+    margin-bottom: 40px;
+}
+
+#c-img{
+   margin:0px;
+   text-align: center;
+   width: 90%;
+   max-width: 450px;
+}
+
+#c-img img{
+    width: 90%;
+    margin-left: 10%;
+    margin-bottom: 0px;
+}
+
+#c-h h3 {
+    font-size: 1.5rem;
+}
+
+#cate {
+    font-size: 1.8rem;
+}
+
+#signin-window{
+    padding: 10px;
+}
+
+#s-img img{
+    width: 90%;
+    max-width: 360px;
+    border-radius: 270px;
+}
+
+#contact-box input, 
+#contact-box textarea{
+    margin-left: 0%;
+}
+
+.form-group button , .rform-group button , .sform-group button{
+    margin: 10px;
+    margin-left: 0;
+}
+
+#flex{
+    flex-direction: column;
+}
+
+/* quizlevels.html */
+
+#level-box{
+    grid-gap:2rem;
+    grid-template-columns: repeat(1,auto);
+    /* margin: 5px; */
+
+}
+
+#level-h {
+    font-size: 1.5rem;
+    margin-left: 25px;
+}
+
+#levelValue {
+    width: 75%;
+    margin-left: 25px;
+}
+
+    
+#start-cat{
+margin: 40px;
+}
+
+
+/* quiz.html */
+
+#container{
+    flex-direction: column;
+}
+/* 
+#container img {
+    width: 50%;
+    margin: 54px auto;
+    max-height: 360px;
+    border-radius: 12px;
+    opacity: 0.9;
+} */
+
+#container img {
+    width: 70%;
+    max-width: 400px;
+    margin: 0px auto;
+    max-height: 360px;
+    border-radius: 12px;
+    opacity: 0.9;
+}
+
+#q-container {
+    width: 90%;
+    margin: 0px auto;
+    margin-top: 40px;
+    margin-bottom: 75px;
+    padding: 20px;
+}
+
+.answer{
+    margin: 10px;
+}
+
+#chead{
+    margin-left: 6%;
+}
+
+#c-heading p{
+    margin-left: 6%;
+}
+
+#c-heading {
+    margin: 30px 0px;
+    margin-top: 60px;
+}
+
+.logo-q{
+    display: none;
+}

@@ -1,0 +1,81 @@
+<%- include("header.ejs") %>
+
+<style>
+    #followingNavbar {
+        display: block;
+        position: fixed;
+        top: 0;
+    }
+
+    #topNavbar {
+        display: none;
+    }
+</style>
+
+<div id="c-h">
+    <h1 id="ch">Instructions</h1>
+    <h3>All You Need To Know Before You Start</h3>
+    <p>Already familiar with Instructions? Start the Quiz now!</p>
+    <a href="/categories" id="insBtn"
+        style="font-family: initial;display: block;width: 200px;margin: 45px auto;background-color: rgb(52, 116, 153);"
+        class="btn icon">Start Now <i class="material-icons right">forward</i></a>
+</div>
+
+<div id="insDiv" style="display: flex;">
+    <div class="imgDiv">
+        <img src="images/man-explaining.jpg" alt="Instructions" style="width: 100%;height: 100%;">
+    </div>
+    <div class="ullist">
+        <ul style="font-size: 1.5rem;padding: 10px 10%;">
+            <li>There are numerous categories for the qustions here at QuizTown! </li>
+            <li>These categores have levels or stages to rate the individual performance of each player. </li>
+            <li> There are 3 levels namely Normal , Nightmare & Insane. </li>
+            <li> These are further divided into sub-levels ranging from 1 to 10. </li>
+        </ul>
+    </div>
+</div>
+
+
+<h3 id="cat-h">Categories</h3>
+
+<div id="catDiv" style="display: flex;">
+
+    <div class="ullist">
+        <ul style="font-size: 1.5rem;padding: 10px 10%;">
+            <li>Art and Literature</li>
+            <li>General Knowledge</li>
+            <li>Geography</li>
+            <li>History</li>
+            <li>Music</li>
+            <li>Science and Nature</li>
+            <li>Sport</li>
+            <li>Tie Break</li>
+            <li>TV and Films</li>
+        </ul>
+    </div>
+
+    <div class="imgDiv">
+        <img src="images/categories.jpg" alt="Instructions" style="width: 100%;height: 100%;">
+    </div>
+
+
+</div>
+
+
+<h3 id="cat-h" class="mbtm">Scoring</h3>
+<div id="scoreDiv" style="padding: 45px 10%;">
+
+    <div class="ullist" style="margin-bottom: 120px;border: 2px dotted;">
+        <ul style="font-size: 1.5rem;padding: 20px 10%;">
+            <li>There are a total of 9 <i>categories</i> namely <i>Art & Literature, General Knowledge, Geography,
+                    History,
+                    Music, Science & Nature, Sport ,Tie Break, TV & Films</i>.</li>
+            <li>In each category , there are <i>10 levels</i>. </li>
+            <li>Each level is having <i>10 questions</i>.</li>
+            <li>Each question will award the number of <i>marks</i> same as <i>level number.</i></li>
+            <li>This means every level will award<i>score</i> same as <i>(level number)*(number of questions).</i></li>
+        </ul>
+    </div>
+</div>
+
+<%- include("footer.ejs") %>

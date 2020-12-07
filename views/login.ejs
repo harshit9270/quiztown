@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | QuizTown</title>
+    <link rel="icon" href="public/images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed&family=Itim&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch&display=swap" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Grenze Gotisch', cursive;
+            font-weight: 900;
+        }
+
+        #dottedBox {
+            border: 2px dotted;
+            margin: 30px auto;
+            margin-top: 70px;
+            padding: 30px 20px;
+            padding-bottom: 60px;
+            width: 60%;
+            /* height: 540px; */
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+    #dottedBox #rightBox {
+      margin-left: 45px;
+      margin-top: 45px;
+      text-align: center;
+    }
+
+    @media screen and (max-width: 1000px) {
+
+      #dottedBox {
+        flex-direction: column;
+        padding: 70px 20px;
+        width: 90%;
+      }
+
+      #dottedBox form {
+        margin: 40px 0;
+      }
+
+      #dottedBox #rightBox {
+        margin-right: 0px;
+      }
+
+      #rightBox span {
+        display: block;
+      }
+
+    }
+    </style>
+</head>
+
+<body>
+
+    <div id="dottedBox">
+        <a id="logo" class="logo-q" href="/"><img src="../images/logo.png"
+                style="width: 45px;position: absolute;top: 15px;left: 15px;z-index: 20;" alt="Quiz Town"></a>
+
+
+        <div id="rightBox" style="margin-right: 60px;margin-top: 25px;text-align: center;">
+            <img src="../images/login.svg" style="width:120%;max-width: 360px;" alt="right">
+            <a href="/register" style="color: black;text-decoration: underline;font-size: 1.2rem;">
+                <p>Create an account</p>
+            </a>
+
+        </div>
+
+        <div>
+            <form action="/login" method="post">
+                <h4>Sign In</h4>
+                
+                <!-- <div class="input-field col s6">
+                    <i class="material-icons prefix">email</i>
+                    <input id="icon_email" type="email" name="email" class="validate email" required>
+                    <label for="icon_email">Email</label>
+                </div> -->
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="icon_username" type="text" name="username" class="validate username" required>
+                    <label for="icon_username">Username</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">lock</i>
+                    <input id="icon_password" type="password" name="password" class="validate password" required>
+                    <label for="icon_password">Password</label>
+                </div>
+
+                <button style="margin-top: 15px;" class="btn waves-effect waves-light" type="submit" name="action">Log
+                    In
+                    <i class="material-icons right">send</i>
+                </button>
+
+            </form>
+
+            <div style="margin-top: 40px;">
+
+                <span style="margin: 10px;">Or login with</span>
+                <a href="/auth/facebook" class="btn-floating btn-medium waves-effect waves-light"
+                    style="background-color: #3b5998;margin: 6px;"><i class="ri-facebook-line"></i></a>
+                <a href="/auth/google" class="btn-floating btn-medium waves-effect waves-light red"
+                    style="margin: 6px;"><i class="ri-google-line"></i></a>
+
+             
+            </div>
+
+        </div>
+    </div>
+
+  <!-- divs used for displaying messages passed on to ejs using res.render (rest is done below using jQuery) -->
+  <div id="updateMessage" style="display:none"><%= updateMessage %></div>
+
+  <script>
+      
+    // jQuery code to display a toast message on recieving message through res.render 
+    if (document.querySelector("#updateMessage").innerHTML != "") {
+      M.toast({ html: `${document.querySelector("#updateMessage").innerHTML}` })
+    }
+
+  </script>
+
+</body>
+
+</html>

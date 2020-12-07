@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | QuizTown</title>
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed&family=Itim&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch&display=swap" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Grenze Gotisch', cursive;
+      font-weight: 900;
+    }
+
+    #dottedBox {
+      border: 2px dotted;
+      margin: 30px auto;
+      margin-top: 45px;
+      padding: 30px 20px;
+      padding-bottom: 60px;
+      width: 75%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #dottedBox #rightBox {
+      margin-left: 45px;
+      margin-top: 45px;
+      text-align: center;
+    }
+
+    @media screen and (max-width: 1000px) {
+
+      #dottedBox {
+        flex-direction: column;
+        padding: 70px 20px;
+        width: 90%;
+      }
+
+      #dottedBox form {
+        margin-bottom: 40px;
+      }
+
+      #dottedBox #rightBox {
+        margin-left: 0px;
+      }
+
+      #rightBox span {
+        display: block;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <% let one=""; let two=""; let inOrOut=""; 
+    if(userData.picture)
+    { one = userData.picture; }
+     else if(!userData.picture)
+     { 
+    one="https://w3schools.com/howto/img_avatar.png"
+    }
+    if(userData.username)
+    { two = userData.username; }
+     else if(userData.displayName)
+     { 
+    two=userData.displayName
+    }
+         inOrOut = `
+            <div class="chip tooltip" style="position: absolute;top: 20px;right: 60px;z-index: 20;">
+                <img src="${one}" alt="Contact Person">
+                ${two}
+            </div>
+        `; 
+         %>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="/about">About</a></li>
+    <li><a href="/instruction">Start Now</a></li>
+    <li><a href="/contact">Contact Us</a></li>
+    <a href="/logout"
+                    style="margin-top: 10px;margin-left: 20px;color: white;background-color: #6e6e6e;font-size: 1rem;"
+                    class="btn waves-effect btn-small waves-light">Logout</a>
+  </ul>
+
+  <div id="dottedBox">
+    <div>
+      <%- inOrOut %>
+    </div>
+    <a href="" data-target="mobile-demo" class="sidenav-trigger" style="color: black;position: absolute;top: 22px;right: 20px;z-index: 20;"><i
+      class="material-icons">menu</i></a>
+    <a id="logo" class="logo-q" href="/"><img src="../images/logo.png"
+        style="width: 45px;position: absolute;top: 15px;left: 15px;z-index: 20;" alt="Quiz Town"></a>
+
+    <form action="/addnewquestions" method="post">
+      <h4>Add new questions to the database</h4>
+
+      <input type="text" name="username" value="<%=userData.username%>" style="display: none;">
+
+      <div class="input-field col s12 m6" style="margin: 40px 0;">
+        <select class="icons" name="categoryId" required>
+          <option value="" disabled selected>Choose category</option>
+          <option value="1" data-icon="/categories/artAndLiterature.jpg" class="left">Art and Literature</option>
+          <option value="2" data-icon="/categories/generalKnowledge.jpg" class="left">General Knowledge</option>
+          <option value="3" data-icon="/categories/geography.jpg" class="left">Geography</option>
+          <option value="4" data-icon="/categories/history.jpg" class="left">History</option>
+          <option value="5" data-icon="/categories/music.jpg" class="left">Music</option>
+          <option value="6" data-icon="/categories/scienceAndNature.jpg" class="left">Science and Nature</option>
+          <option value="7" data-icon="/categories/sport.jpg" class="left">Sport</option>
+          <option value="8" data-icon="/categories/tieBreak.jpg" class="left">Tie Break</option>
+          <option value="9" data-icon="/categories/tvAndFilms.jpg" class="left">TV and Films</option>
+        </select>
+        <label>Categories</label>
+      </div>
+      <div class="input-field col s12 m6" style="margin: 10px 0;">
+        <select name="levelId" required>
+          <option value="" disabled selected>Choose Level</option>
+          <option value="1">Level 1</option>
+          <option value="2">Level 2</option>
+          <option value="3">Level 3</option>
+          <option value="4">Level 4</option>
+          <option value="5">Level 5</option>
+          <option value="6">Level 6</option>
+          <option value="7">Level 7</option>
+          <option value="8">Level 8</option>
+          <option value="9">Level 9</option>
+          <option value="10">Level 10</option>
+        </select>
+        <label>Levels</label>
+      </div>
+
+      <div class="input-field col s6">
+        <i class="material-icons prefix">question_answer</i>
+        <input id="icon_prefix" type="text" name="question" class="validate question" required>
+        <label for="icon_prefix">Question</label>
+      </div>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">answer</i>
+        <input id="icon_email" type="text" name="option1" class="validate option1" required>
+        <label for="icon_email">Option 1</label>
+      </div>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">answer</i>
+        <input id="icon_email" type="text" name="option2" class="validate option2" required>
+        <label for="icon_email">Option 2</label>
+      </div>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">answer</i>
+        <input id="icon_email" type="text" name="option3" class="validate option3" required>
+        <label for="icon_email">Option 3</label>
+      </div>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">answer</i>
+        <input id="icon_email" type="text" name="option4" class="validate option4" required>
+        <label for="icon_email">Option 4</label>
+      </div>
+      <div class="input-field col s12 m6" style="margin: 30px 0;">
+        <select name="correct" required>
+          <option value="" disabled selected>Choose correct option</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+          <option value="4">Option 4</option>
+        </select>
+        <label>Correct Option</label>
+      </div>
+
+      <p>
+        <label>
+          <input type="checkbox" name="consent" required />
+          <span>I have verified all fields individually</span>
+        </label>
+      </p>
+
+      <button style="margin-top: 15px;" class="btn waves-effect waves-light" id="submitBtn" type="submit"
+        name="action">Save
+        <i class="material-icons right">send</i>
+      </button>
+
+    </form>
+
+
+
+
+  </div>
+
+
+  <!-- divs used for displaying messages passed on to ejs using res.render (rest is done below using jQuery) -->
+  <div id="updateMessage" style="display:none"><%= updateMessage %></div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+
+    // jQuery code to display a toast message on recieving message through res.render 
+    if (document.querySelector("#updateMessage").innerHTML != "") {
+      M.toast({ html: `${document.querySelector("#updateMessage").innerHTML}` })
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('select');
+      var instances = M.FormSelect.init(elems);
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems);
+    });
+
+
+  </script>
+
+</body>
+
+</html>

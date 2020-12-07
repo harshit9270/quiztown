@@ -1,0 +1,84 @@
+<%- include("header.ejs") %>
+
+<style>
+    #followingNavbar {
+        display: block;
+        position: fixed;
+        top: 0;
+    }
+
+    #topNavbar {
+        display: none;
+    }
+</style>
+
+
+<h3 id="cat-h" style="margin-top: 150px;margin-bottom: 45px;">Choose the Category you want to quiz about</h3>
+<div>
+    <form action="/quizlevels" method="POST" style="width: 45%;margin: 30px auto;">
+        <select name="myCategory" id="categoryValue">
+            <option value="1"> Art and Literature</option>
+            <option value="2">General Knowledge</option>
+            <option value="3">Geography</option>
+            <option value="4">History</option>
+            <option value="5">Music</option>
+            <option value="6">Science and Nature</option>
+            <option value="7">Sport</option>
+            <option value="8">Tie Break</option>
+            <option value="9">TV and Films</option>
+        </select>
+        <button type="submit" onclick="passValue()" id="insBtn"
+            style="font-family: initial;margin-top: 20px;background-color: rgb(52, 116, 153);width: fit-content;"
+            class="btn icon">Proceed<i class="material-icons right">forward</i></button>
+
+    </form>
+</div>
+
+<div id="catDiv" style="display: flex;">
+
+    <div class="ullist">
+        <ul style="font-size: 1.5rem;padding: 10px 10%;">
+            <li>Art and Literature</li>
+            <li>General Knowledge</li>
+            <li>Geography</li>
+            <li>History</li>
+            <li>Music</li>
+            <li>Science and Nature</li>
+            <li>Sport</li>
+            <li>Tie Break</li>
+            <li>TV and Films</li>
+        </ul>
+    </div>
+
+    <div class="imgDiv">
+        <img src="/images/categories.jpg" alt="Instructions" style="width: 100%;height: 100%;">
+    </div>
+
+
+</div>
+
+
+
+<div style="text-align: center;margin-bottom: 120px;">
+    <p>Not well-versed with Instructions</p>
+    <a href="/instruction" id="insBtn"
+        style="font-family: initial;margin-top: 20px;background-color: rgb(52, 116, 153);width: fit-content;"
+        class="btn icon">Back to Instructions<i class="material-icons right">skip_previous</i></a>
+
+</div>
+
+
+<script>
+    function passValue() {
+        var categoryId = document.getElementById('categoryValue').value;
+        // console.log(categoryId);
+        localStorage.setItem("categoryValue", categoryId);
+        return false;
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+    });
+</script>
+
+<%- include("footer.ejs") %>

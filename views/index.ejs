@@ -1,0 +1,123 @@
+<%- include("header.ejs") %>
+
+<section id="home">
+    <div id="text">
+        <!-- <p>Enjoy the most exciting quizzes</p> -->
+        <h3>You are about to experience some mind-storming trivias</h3>
+        <p>All you need to answer our quizzes is patience and some basic knowledge. Dive deep into the ocean of quests
+            -Quiz Town!
+        </p>
+        <a href="/instruction" id="insBtn"
+            style="font-family: initial;margin-top: 20px;background-color: rgb(52, 116, 153);width: fit-content;"
+            class="btn icon">Start Now <i class="material-icons right">forward</i></a>
+    </div>
+</section>
+<!-- <blockquote> "Everyone loves sport. And everyone loves a quiz."<br>
+        -Sue Barker
+    </blockquote> -->
+
+
+<section id="features">
+    <!-- Features section starts -->
+
+    <!-- Feature1 section -->
+    <div id="feature1">
+        <!-- svg code moved to SVGfeature1.ejs file to shorten/simplify code  -->
+        <img id="feature1svg" src="/images/woman-laptop.jpg" alt="newsletter">
+
+        <span id="fone">
+            <h2>Engaging quizzes to get you lost</h2>
+            <p style="font-size: 1.5rem">
+                Exciting and engaging quizzes to get you feel lost in the town of Quizzes. Quench all your quizzy thrist
+                here.
+            </p>
+        </span>
+    </div>
+    <!-- Feature1 section ends -->
+
+    <div id="verticalDivider"></div>
+
+    <!-- Feature2 section starts -->
+    <div id="feature2">
+        <span id="ftwo">
+            <h2>A town full of Quizzes</h2>
+            <p style="font-size: 1.5rem">
+                We strive to provide number of quality quizzes to all the manics out there. We have as many as 9
+                categories and nearly 50 questions in each one to get you going.
+            </p>
+        </span>
+
+        <img id="feature2svg" src="/images/townfull.jpg" alt="newsletter">
+    </div>
+
+    <!-- Feature2 section ends -->
+    <div id="verticalDivider"></div>
+
+    <!--Feature 3 section starts-->
+    <div id="feature3">
+        <img id="feature3svg" src="/images/choose.jpg"  alt="newsletter">
+
+        <span id="fthree">
+            <h2>Multiple Quiz categories to choose from</h2>
+            <p style="font-size: 1.5rem">
+                As many as 9 categories including Art and Literature
+                ,General Knowledge
+                ,Geography
+                ,History
+                ,Music
+                ,Science and Nature
+                ,Sport
+                ,Tie Break
+                ,TV and Films .
+            </p>
+        </span>
+    </div>
+    <!--Feature 3 section ends-->
+
+</section>
+
+
+<!-- newsletter section  -->
+
+<div style="text-align: center;">
+    <p>Want to recieve regular quiz updates</p>
+    <h1 class="mh" style="color: rgb(52, 116, 153);">Join our mailing list</h1>
+</div>
+
+<div id="newsletter-section">
+
+    <div id="newsletterImg">
+        <img style="width: 100%;height: 100%;border-radius: 10px;" src="/images/newsletter.jpg" alt="newsletter">
+    </div>
+
+    <div>
+        <div class="content" style="font-size: 1.8rem;padding: 36px 60px;">
+            <form id="newsletterForm" action="/newsletter" method="POST">
+                <input type="email" name="email" id="email" placeholder="Your email" required>
+                <button type="submit" class="btn">Yes, Please <i class="material-icons right">forward</i> </button>
+            </form>
+            <p style="font-size: 1.3rem;margin-top: 30px;">Get ocassional updates and important newsletters in your
+                inbox.</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- newsletter section ends -->
+
+<script>
+    myFunction();
+    window.onscroll = function () { myFunction() };
+
+    function myFunction() {
+        if (document.body.scrollTop > 540 || document.documentElement.scrollTop > 540) {
+            document.getElementById("followingNavbar").style.display = "block";
+            document.getElementById("topNavbar").style.display = "none";
+        } else {
+            document.getElementById("topNavbar").style.display = "block";
+            document.getElementById("followingNavbar").style.display = "none";
+        }
+    }
+</script>
+
+<%- include("footer.ejs") %>

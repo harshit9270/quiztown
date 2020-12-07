@@ -1,0 +1,67 @@
+<%- include("header.ejs") %>
+
+<style>
+  #followingNavbar {
+    display: block;
+    position: fixed;
+    top: 0;
+  }
+
+  #topNavbar {
+    display: none;
+  }
+  #container {
+      margin-top: 100px;
+      margin-bottom: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #container form {
+      width: 45%;
+    }
+    @media screen and (max-width: 600px) {
+      #container {
+        padding: 10px;
+        text-align: center;
+      }
+
+      #container form {
+        width: 81%;
+      }
+    }
+</style>
+
+<div id="container">
+
+    <h2 style="color: #17706e;">Drop us a line</h2>
+    <h3 style="color: #84a9ac;margin-bottom: 45px;">We would be glad to hear from you.</h3>
+
+    <form action="/contact" method="POST">
+
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="text" name="phone" placeholder="Your Phone" required>
+      <textarea name="message" cols="30" rows="10" placeholder="Your Message" style="resize: vertical;margin-top: 12px;min-height: 180px;"></textarea>
+      <button class="btn waves-effect waves-light" type="submit" name="action" style="margin-top:20px;">Send
+        <i class="material-icons right">send</i>
+      </button>
+
+    </form>
+
+    <p>OR</p>
+
+    <a href="mailto:harshitsharma9270@gmail.com" style="color:white;"><button class="btn waves-effect waves-light"
+        style="background-color: #5e6f64;margin: 18px 0;">Email QuizTown
+        <i class="material-icons right">email</i></a>
+    </button>
+
+
+
+  </div>
+
+
+
+    <%- include("footer.ejs") %>
