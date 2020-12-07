@@ -69,7 +69,7 @@
     <!-- Logic for displaying (Login/Register Butttons) or (user profile) ,if user is unauthenticated or isAuthenticated  -->
     <% let one=""; let two=""; let inOrOut=""; if(userData == undefined) {
     inOrOut = `
-    <li style="margin-left: 10px;">
+    <li style="margin: 20px;">
         <div class="chip tooltip">
             <img src="https://w3schools.com/howto/img_avatar.png" alt="Contact Person">
             Guest
@@ -99,7 +99,7 @@
     two=userData.displayName
     }
      inOrOut = `
-    <li style="margin-left: 10px;">
+    <li style="margin: 20px;">
         <div class="chip tooltip">
             <img src="${one}" alt="Contact Person">
             ${two}
