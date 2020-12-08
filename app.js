@@ -438,7 +438,7 @@ app.get('/categories', (req, res) => {
 app.post("/quizlevels", (req, res) => {
     let pageTitle = "Levels";
     if (req.isAuthenticated()) {
-        ProgressData.find({ username: req.user.username, uniqueId: req.user._id}, (err, data) => {
+        ProgressData.find({uniqueId: req.user._id}, (err, data) => {
             if (err) console.log(err);
             else if (data) {
                 console.log(data ,"443");
@@ -464,7 +464,7 @@ app.post("/saveprogress", (req, res) => {
     console.log(req.body, "req.body.a , b");
     let progressData = new ProgressData(req.body);
 
-    ProgressData.findOneAndUpdate({ username: req.body.username, uniqueId: req.body.uniqueId, levelId: req.body.levelId, cateId: req.body.cateId }, req.body, (err, docs) => {
+    ProgressData.findOneAndUpdate({uniqueId: req.body.uniqueId, levelId: req.body.levelId, cateId: req.body.cateId }, req.body, (err, docs) => {
         if (!err) {
             // console.log(docs);
             // console.log("done update");
