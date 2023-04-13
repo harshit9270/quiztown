@@ -143,7 +143,7 @@ passport.use(
         {
             clientID: process.env.CLIENT_ID,
             clientSecret: process.env.CLIENT_SECRET,
-            callbackURL: "https://quiztown.herokuapp.com/auth/google/home",
+            callbackURL: "https://quiztown.onrender.com/auth/google/home",
             userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
         },
         function (accessToken, refreshToken, profile, cb) {
@@ -179,7 +179,7 @@ passport.use(
         {
             clientID: process.env.FACEBOOK_APP_ID,
             clientSecret: process.env.FACEBOOK_APP_SECRET,
-            callbackURL: "https://quiztown.herokuapp.com/auth/facebook/home",
+            callbackURL: "https://quiztown.onrender.com/auth/facebook/home",
         },
         function (accessToken, refreshToken, profile, cb) {
             console.log(profile);
